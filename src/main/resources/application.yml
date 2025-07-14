@@ -46,7 +46,7 @@ management:
         include: '*, openapi, swagger-ui'
       base-path: /management
 server:
-  port: 8081
+  port: 8080
   servlet:
     contextPath: /smart-tasker
 springdoc:
