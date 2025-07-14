@@ -1,13 +1,10 @@
-# Stage 1: Build the app using Amazon Corretto (Alpine)
-FROM amazoncorretto:17-alpine3.18 AS builder
+# Stage 1: Build the app using Amazon Corretto (ARM64)
+FROM amazoncorretto:17-alpine3.18 as builder
 
 WORKDIR /app
 
-# Copy all files to container
+# Copy everything into the container
 COPY . .
-
-# Make mvnw executable
-RUN chmod +x ./mvnw
 
 # Build the application (skip tests for faster build)
 RUN ./mvnw clean package -DskipTests
@@ -17,10 +14,10 @@ FROM amazoncorretto:17-alpine3.18
 
 WORKDIR /app
 
-# Copy the built JAR from the builder stage
+# Copy only the final JAR from the builder stage
 COPY --from=builder /app/target/smart-tasker-0.0.1-SNAPSHOT.jar app.jar
 
-# Expose port 8080
+# Expose the application port
 EXPOSE 8080
 
 # Run the app
