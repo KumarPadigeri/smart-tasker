@@ -1,0 +1,88 @@
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${GMAIL_APP_USERNAME}
+    password: ${GMAIL_APP_PSWD} # Use App Password if 2FA is enabled
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  datasource:
+    username: ${DB_USERNAME}
+    password: ${DB_PSWD}
+    url: ${DB_URL}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    open-in-view: false
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+      ddl-auto: update
+    properties:
+      hibernate:
+        bytecode:
+          use_reflection_optimizer: false
+        provider: org.hibernate.bytecode.internal.none.None
+        generate_statistics: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  application:
+    name: smart-tasker
+logging:
+  level:
+    org:
+      springframework: DEBUG
+      hibernate:
+        stat: DEBUG
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*, openapi, swagger-ui'
+      base-path: /management
+server:
+  port: 8081
+  servlet:
+    contextPath: /smart-tasker
+springdoc:
+  show-actuator: true
+  swagger-ui:
+    path: /documentation
+    enabled: true
+  api-docs:
+    path: /api-docs
+    enabled: true
+  group-configs:
+    - group: Testing APIs
+      paths-to-match: /test/**
+    - group: Admin Management
+      paths-to-match: /management/**
+    - group: Animal APIs
+      paths-to-match: /pet/**
+    - group: JWT APIs
+      paths-to-match: /jwt/**
+    - group: JWT Smart tracker Auth APIs
+      paths-to-match: /api/auth/**
+    - group: Task APIs
+      paths-to-match:
+        - /api/task/**
+        - /api/tasks/**
+
+application:
+  auth:
+    roles:
+      USER:
+        username: ${USER_USERNAME}
+        password: ${USER_PWD}
+      ADMIN:
+        username: ${ADMIN_USERNAME}
+        password: ${ADMIN_PWD}
+  jwt:
+    secret: ${JWT_SECRET}
+#http://localhost:8081/smart-tasker/documentation
+#http://localhost:8081/smart-tasker/swagger-ui/index.html
