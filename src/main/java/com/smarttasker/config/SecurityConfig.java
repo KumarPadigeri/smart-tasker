@@ -63,7 +63,7 @@ public class SecurityConfig {
             "/csa/api/token",
             // Actuators
             "/actuator/**",
-            "/health/**",
+            "/management/health",
             "/jwt/addUser",
             "jwt/getToken",
             "/api/auth/register",
