@@ -6,6 +6,9 @@ WORKDIR /app
 # Copy everything into the container
 COPY . .
 
+# Make mvnw executable (fix permission denied)
+RUN chmod +x ./mvnw
+
 # Build the application (skip tests for faster build)
 RUN ./mvnw clean package -DskipTests
 
