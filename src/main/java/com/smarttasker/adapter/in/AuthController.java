@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
  * @User Kumar Padigeri
  */
 @RestController
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "https://smart-tasker-ui.vercel.app")
 @AllArgsConstructor
 @RequestMapping("api/auth")
 public class AuthController {
