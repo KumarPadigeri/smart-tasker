@@ -141,5 +141,5 @@ The app runs at: `http://localhost:8080`
 
 **Kumara Swamy Padigeri**  
 📫 [pk24@usf.edu](mailto:pk24@usf.edu)  
-🔗 [LinkedIn](https://www.linkedin.com/in/kumar-padigeri)  
+🔗 [LinkedIn](https://www.linkedin.com/in/kumaraswamypadigeri)  
 🌐 [Portfolio](https://kumarpadigeri.wixsite.com/web-developer)
